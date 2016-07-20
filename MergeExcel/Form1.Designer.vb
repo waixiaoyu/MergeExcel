@@ -38,13 +38,14 @@ Partial Class Form1
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label_Count = New System.Windows.Forms.Label()
         Me.BTN_Open = New System.Windows.Forms.Button()
+        Me.BTN_OpenDir = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'BTN_Merge
         '
         Me.BTN_Merge.Location = New System.Drawing.Point(161, 126)
         Me.BTN_Merge.Name = "BTN_Merge"
-        Me.BTN_Merge.Size = New System.Drawing.Size(154, 43)
+        Me.BTN_Merge.Size = New System.Drawing.Size(154, 55)
         Me.BTN_Merge.TabIndex = 1
         Me.BTN_Merge.Text = "开始合并"
         Me.BTN_Merge.UseVisualStyleBackColor = True
@@ -155,18 +156,28 @@ Partial Class Form1
         'BTN_Open
         '
         Me.BTN_Open.Enabled = False
-        Me.BTN_Open.Location = New System.Drawing.Point(47, 136)
+        Me.BTN_Open.Location = New System.Drawing.Point(37, 126)
         Me.BTN_Open.Name = "BTN_Open"
         Me.BTN_Open.Size = New System.Drawing.Size(90, 23)
         Me.BTN_Open.TabIndex = 21
         Me.BTN_Open.Text = "打开合并结果"
         Me.BTN_Open.UseVisualStyleBackColor = True
         '
+        'BTN_OpenDir
+        '
+        Me.BTN_OpenDir.Location = New System.Drawing.Point(37, 158)
+        Me.BTN_OpenDir.Name = "BTN_OpenDir"
+        Me.BTN_OpenDir.Size = New System.Drawing.Size(90, 23)
+        Me.BTN_OpenDir.TabIndex = 22
+        Me.BTN_OpenDir.Text = "打开文件夹"
+        Me.BTN_OpenDir.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(467, 181)
+        Me.ClientSize = New System.Drawing.Size(467, 193)
+        Me.Controls.Add(Me.BTN_OpenDir)
         Me.Controls.Add(Me.BTN_Open)
         Me.Controls.Add(Me.Label_Count)
         Me.Controls.Add(Me.Label6)
@@ -181,6 +192,7 @@ Partial Class Form1
         Me.Controls.Add(Me.BTN_ChooseInput)
         Me.Controls.Add(Me.TB_Input)
         Me.Controls.Add(Me.BTN_Merge)
+        Me.MaximizeBox = False
         Me.Name = "Form1"
         Me.Text = "MergeExcel"
         Me.ResumeLayout(False)
@@ -203,5 +215,6 @@ Partial Class Form1
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label_Count As System.Windows.Forms.Label
     Friend WithEvents BTN_Open As System.Windows.Forms.Button
+    Friend WithEvents BTN_OpenDir As System.Windows.Forms.Button
 
 End Class

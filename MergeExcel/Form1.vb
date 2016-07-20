@@ -19,8 +19,12 @@ Public Class Form1
     Dim totalCount As Int16
     Dim currentCount As Int16 = 1
     Private Sub BTN_Merge_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTN_Merge.Click
+        ''初始化相关参数
+        currentCount = 1
         BTN_Open.Enabled = False
         Label_Count.Text = "准备开始..."
+
+        ''
         If TB_OutputFileName.Text <> Nothing Then
             outputFileName = "\" + TB_OutputFileName.Text + ".xlsx"
         End If
@@ -43,15 +47,18 @@ Public Class Form1
                 Dim workBook As Excel.Workbook '定义工作簿
                 Dim sheet As Excel.Worksheet '定义工作表
                 Dim columns As Int16
-                Dim rows As Int16
+                Dim rows As Int16 = 32767
                 myExcel.Visible = False
                 ''
                 workBook = myExcel.Workbooks.Open(item.FullName)
                 sheet = workBook.Sheets(1)
                 columns = sheet.UsedRange.Cells.Columns.Count
-                rows = sheet.UsedRange.Cells.Rows.Count
+                'rows = sheet.UsedRange.Cells.Rows.Count
                 For i = 2 To rows
                     xlColumns = 1
+                    If (sheet.Cells(i, 1).value = Nothing And sheet.Cells(i, 2).value = Nothing And sheet.Cells(i, 3).value = Nothing) Then
+                        Exit For
+                    End If
                     For j = 1 To columns
                         xlSheet.Cells(xlRows, xlColumns).value = sheet.Cells(i, j).value '往新文件中写入数据
                         xlColumns += 1
@@ -144,5 +151,14 @@ Public Class Form1
         ''
         workBook = myExcel.Workbooks.Open(outputPath + outputFileName)
         BTN_Open.Enabled = False
+    End Sub
+
+    Private Sub BTN_OpenDir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTN_OpenDir.Click
+        outputPath = FolderBrowserDialog_Output.SelectedPath()
+        If (outputPath = Nothing) Then
+            MessageBox.Show("请选选择输出路径！")
+            Return
+        End If
+        Shell("c:\windows\explorer.exe " + outputPath, vbNormalFocus)
     End Sub
 End Class
